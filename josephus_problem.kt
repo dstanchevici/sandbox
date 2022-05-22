@@ -14,7 +14,7 @@ fun main(){
     val numberOfPeople = 9
     val countOff = 5
 
-    val first = Node(1) // Until changed t.next refers to itself (contains a reference/address/link to itself)
+    val first = Node(1) // Until changed first.next refers to itself (contains a reference/address/link to itself)
     var x = first // Use x to create multiple objects of Node
     println("x.item: ${x.item}; x.next: ${x.next}")
     println("------------------------------------")
