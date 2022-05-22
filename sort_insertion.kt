@@ -11,13 +11,26 @@ Basically, Insertion sort is efficient for small data values
 Insertion sort is adaptive in nature, i.e. it is appropriate for data sets which are already partially sorted.
  */
 
+private fun setSentinel(a: IntArray){
+    var indexOfMin = 0
+    for(j in 0 until a.lastIndex){
+        if (a[j+1] > a[j])
+            indexOfMin = j
+    }
+    val t = a[0]
+    a[0] = a[indexOfMin]
+    a[indexOfMin] = t
+}
+
 
 private fun insertionSort(a: IntArray){
+    setSentinel(a)
+
     for (i in 1..a.lastIndex){
         val currentValue = a[i] // taking turn to sort each element from left to right.
         var vacantIndex = i // It is possible that the sorted elements on the left will have to be shifted one position to the right.
 
-        while (vacantIndex > 0 && a[vacantIndex-1] > currentValue){
+        while (a[vacantIndex-1] > currentValue){
             a[vacantIndex] = a[vacantIndex-1] // right shift of greater values
             vacantIndex-- // moving left to next comparison in the sorted part of the array
         }
