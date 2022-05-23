@@ -23,15 +23,30 @@ private fun selectionSort(a: IntArray){
         var indexOfMin = leftIndex
 
         for (i in leftIndex+1 .. a.lastIndex){
-            if (a[i] < a[indexOfMin])
+            if (a[i] < a[indexOfMin]) {
                 indexOfMin = i
+            }
         }
 
         if (a[leftIndex] > a[indexOfMin])
             swap(a, leftIndex, indexOfMin)
     }
 
+
+
 }
+
+// t = O(n * n)
+// t = O(n * log(n))
+
+/*
+n = 100
+100 * 50 = 5000
+
+
+n = 1000
+1000 * 500 = 500000
+ */
 
 fun main(){
     val a = intArrayOf(7, 9, 0, 1)
