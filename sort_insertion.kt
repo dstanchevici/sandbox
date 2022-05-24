@@ -13,35 +13,41 @@ Insertion sort is adaptive in nature, i.e. it is appropriate for data sets which
 
 private fun setSentinel(a: IntArray){
     var indexOfMin = 0
-    for(j in 0 until a.lastIndex){
-        if (a[j+1] > a[j])
+
+    for(j in 1 until a.lastIndex){
+        if (a[indexOfMin] > a[j])
             indexOfMin = j
     }
-    val t = a[0]
-    a[0] = a[indexOfMin]
-    a[indexOfMin] = t
+
+    if (indexOfMin != 0){
+        val t = a[0]
+        a[0] = a[indexOfMin]
+        a[indexOfMin] = t
+    }
 }
 
 
 private fun insertionSort(a: IntArray){
     setSentinel(a)
 
-    for (i in 1..a.lastIndex){
+    for (i in 2..a.lastIndex){
         val currentValue = a[i] // taking turn to sort each element from left to right.
         var vacantIndex = i // It is possible that the sorted elements on the left will have to be shifted one position to the right.
 
-        while (a[vacantIndex-1] > currentValue){
+        while (currentValue < a[vacantIndex-1]){
             a[vacantIndex] = a[vacantIndex-1] // right shift of greater values
             vacantIndex-- // moving left to next comparison in the sorted part of the array
         }
 
-        a[vacantIndex] = currentValue // Placing the currentValue into the slot that has become vacant as the result of the right shift
+        if (vacantIndex != i){
+            a[vacantIndex] = currentValue // Placing the currentValue into the slot that has become vacant as the result of the right shift
+        }
     }
 }
 
 
 fun main(){
-    val a = intArrayOf(7, 4, 8, 0, 3)
+    val a = intArrayOf(0, 7, 4, 1, 8, 3, 0)
     insertionSort(a)
     println(a.joinToString())
 }
