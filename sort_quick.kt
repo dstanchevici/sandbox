@@ -24,6 +24,16 @@ private fun partition(a: IntArray, start: Int, end: Int): Int{
     return partitionIndex
 }
 
+/*
+sp = 5
+|abcdef                                             |
+stack = CharArray()
+var sp = 0
+
+stack[sp++] = 'f'
+println(stack[--sp])
+*/
+
 
 private fun quickSort(a: IntArray, start: Int, end: Int){
     if (start < end){
